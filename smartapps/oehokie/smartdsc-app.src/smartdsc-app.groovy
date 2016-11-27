@@ -48,8 +48,8 @@ def copyConfig() {
 
         section() {
             paragraph "View this SmartApp's configuration to use it in other places."
-            href url:"https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/config?access_token=${state.accessToken}", style:"embedded", required:false, title:"Config", description:"Tap, select, copy, then click \"Done\""
-            href url:"https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/devices?access_token=${state.accessToken}", style:"embedded", required:false, title:"Debug", description:"View accessories JSON"
+            href url:"https://graph-na02-useast1.api.smartthings.com/api/smartapps/installations/${app.id}/config?access_token=${state.accessToken}", style:"embedded", required:false, title:"Config", description:"Tap, select, copy, then click \"Done\""
+            href url:"https://graph-na02-useast1.api.smartthings.com/api/smartapps/installations/${app.id}/devices?access_token=${state.accessToken}", style:"embedded", required:false, title:"Debug", description:"View accessories JSON"
         }
     }
 }
@@ -248,7 +248,7 @@ def renderConfig() {
 
 def deviceCommandMap(device, type) {
   device.supportedCommands.collectEntries { command->
-      def commandUrl = "https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/${type}/${device.id}/command/${command.name}?access_token=${state.accessToken}"
+      def commandUrl = "https://graph-na02-useast1.api.smartthings.com/api/smartapps/installations/${app.id}/${type}/${device.id}/command/${command.name}?access_token=${state.accessToken}"
       [
         (command.name): commandUrl
       ]
@@ -358,7 +358,7 @@ def getURL(e) {
         log.debug "Creating new Access Token: $state.accessToken"
     }
 
-    def url1 = "https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/data"
+    def url1 = "https://graph-na02-useast1.api.smartthings.com/api/smartapps/installations/${app.id}/data"
     def url2 = "?access_token=${state.accessToken}"
     log.debug "${title ?: location.name} Data URL: $url1$url2"
 }
